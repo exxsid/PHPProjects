@@ -1,0 +1,202 @@
+[
+    {
+        "id": 1,
+        "firstname": "Leon",
+        "lastname": "Swains",
+        "email": "lswains0@harvard.edu",
+        "gender": "Male",
+        "phoneNumber": "3503536820",
+        "address": "173 Spenser Center",
+        "dob": "11/04/2004"
+    },
+    {
+        "id": 2,
+        "firstname": "Berkly",
+        "lastname": "Cuxson",
+        "email": "bcuxson1@naver.com",
+        "gender": "Male",
+        "phoneNumber": "7965357136",
+        "address": "5 Doe Crossing Road",
+        "dob": "07/20/1996"
+    },
+    {
+        "id": 3,
+        "firstname": "Christy",
+        "lastname": "Elmore",
+        "email": "celmore2@mit.edu",
+        "gender": "Male",
+        "phoneNumber": "8838836509",
+        "address": "29 Fairfield Pass",
+        "dob": "05/18/2004"
+    },
+    {
+        "id": 4,
+        "firstname": "Tadeo",
+        "lastname": "Whenman",
+        "email": "twhenman3@vk.com",
+        "gender": "Male",
+        "phoneNumber": "5156975474",
+        "address": "23 Brentwood Pass",
+        "dob": "09/23/2004"
+    },
+    {
+        "id": 5,
+        "firstname": "Faydra",
+        "lastname": "Bernardos",
+        "email": "fbernardos4@hhs.gov",
+        "gender": "Female",
+        "phoneNumber": "5758113018",
+        "address": "7971 New Castle Drive",
+        "dob": "12/27/2000"
+    },
+    {
+        "id": 6,
+        "firstname": "Gerhardt",
+        "lastname": "Rooper",
+        "email": "grooper5@smh.com.au",
+        "gender": "Male",
+        "phoneNumber": "4586327340",
+        "address": "62 Stephen Junction",
+        "dob": "07/03/1996"
+    },
+    {
+        "id": 7,
+        "firstname": "Freddie",
+        "lastname": "Brunelli",
+        "email": "fbrunelli6@earthlink.net",
+        "gender": "Female",
+        "phoneNumber": "2093293006",
+        "address": "40 Rieder Hill",
+        "dob": "09/21/1997"
+    },
+    {
+        "id": 8,
+        "firstname": "Hobard",
+        "lastname": "Torra",
+        "email": "htorra7@adobe.com",
+        "gender": "Male",
+        "phoneNumber": "7787510477",
+        "address": "28269 Oak Valley Court",
+        "dob": "04/11/2002"
+    },
+    {
+        "id": 9,
+        "firstname": "Adair",
+        "lastname": "Maynell",
+        "email": "amaynell8@biglobe.ne.jp",
+        "gender": "Male",
+        "phoneNumber": "5551520360",
+        "address": "13063 Express Circle",
+        "dob": "05/07/2003"
+    },
+    {
+        "id": 10,
+        "firstname": "Dianna",
+        "lastname": "Maciunas",
+        "email": "dmaciunas9@miibeian.gov.cn",
+        "gender": "Non-binary",
+        "phoneNumber": "1143017885",
+        "address": "6407 Buhler Place",
+        "dob": "06/25/2002"
+    },
+    {
+        "id": 11,
+        "firstname": "Krissie",
+        "lastname": "Neely",
+        "email": "kneelya@theglobeandmail.com",
+        "gender": "Female",
+        "phoneNumber": "5827926126",
+        "address": "4 2nd Court",
+        "dob": "05/23/1995"
+    },
+    {
+        "id": 12,
+        "firstname": "Rossy",
+        "lastname": "Seagrove",
+        "email": "rseagroveb@google.com",
+        "gender": "Genderfluid",
+        "phoneNumber": "3346817663",
+        "address": "345 Transport Park",
+        "dob": "02/22/2001"
+    },
+    {
+        "id": 13,
+        "firstname": "Raviv",
+        "lastname": "Toomer",
+        "email": "rtoomerc@google.com.hk",
+        "gender": "Male",
+        "phoneNumber": "8161610951",
+        "address": "366 6th Avenue",
+        "dob": "05/27/2004"
+    },
+    {
+        "id": 14,
+        "firstname": "Garwin",
+        "lastname": "Weale",
+        "email": "gwealed@paginegialle.it",
+        "gender": "Male",
+        "phoneNumber": "6312645286",
+        "address": "2681 Merchant Road",
+        "dob": "06/02/1998"
+    },
+    {
+        "id": 15,
+        "firstname": "Ozzie",
+        "lastname": "Pickthorn",
+        "email": "opickthorne@theatlantic.com",
+        "gender": "Male",
+        "phoneNumber": "9186608430",
+        "address": "6664 Kropf Parkway",
+        "dob": "03/04/2000"
+    },
+    {
+        "id": 16,
+        "firstname": "Alic",
+        "lastname": "Parkyn",
+        "email": "aparkynf@java.com",
+        "gender": "Male",
+        "phoneNumber": "4339108080",
+        "address": "81360 Oak Valley Junction",
+        "dob": "06/30/2004"
+    },
+    {
+        "id": 17,
+        "firstname": "Sandra",
+        "lastname": "Chillingsworth",
+        "email": "schillingsworthg@google.ru",
+        "gender": "Female",
+        "phoneNumber": "8404231005",
+        "address": "198 Grim Hill",
+        "dob": "10/12/1998"
+    },
+    {
+        "id": 18,
+        "firstname": "Merla",
+        "lastname": "Iacomo",
+        "email": "miacomoh@cocolog-nifty.com",
+        "gender": "Female",
+        "phoneNumber": "9408540577",
+        "address": "29121 Marquette Junction",
+        "dob": "11/28/1995"
+    },
+    {
+        "id": 19,
+        "firstname": "Gabby",
+        "lastname": "Goodred",
+        "email": "ggoodredi@home.pl",
+        "gender": "Male",
+        "phoneNumber": "1286602500",
+        "address": "33 Kenwood Lane",
+        "dob": "02/06/1998"
+    },
+    {
+        "id": 20,
+        "firstname": "Lindsay",
+        "lastname": "Gercke",
+        "email": "lgerckej@a8.net",
+        "gender": "Male",
+        "phoneNumber": "8021173084",
+        "address": "8530 Canary Terrace",
+        "dob": "06/24/2003"
+    }
+]
