@@ -9,68 +9,42 @@ $db = new FirestoreClient([
     'projectID' => 'infoman2-g2-2bd13',
 ]);
 
-$data = [
-    [
-        'username' => 'master_baiter',
-        'email' => 'masterBaiter@google.com',
-        'password' => '1234',
-        'name' => [
-            'first' => 'Master',
-            'last' => 'Baiter',
-        ],
-        'role' => 'free',
-        'social' => [
-            'facebook' => '/master_baiter',
-            'instagram' => '',
-            'tiktok' => '@master_baiter',
-            'twitter' => '@mbaiter'
-        ]
-    ],
-    [
-        'username' => 'Ogway',
-        'email' => 'Ogway@google.com',
-        'password' => 'Ogway',
-        'name' => [
-            'first' => 'Ogway',
-            'last' => '',
-        ],
-        'role' => 'premium',
-        'social' => [
-            'facebook' => '/ogway',
-            'instagram' => '',
-            'tiktok' => '@ogway',
-            'twitter' => '@ogway'
-        ]
-    ],
-];
-
 
 $userCollectionRef = $db->collection('users');
 
-$id = $userCollectionRef->add(
-    [
-        'username' => 'MasterOgway',
-        'email' => 'MasterOgway@google.com',
-        'password' => 'Ogway',
-        'name' => [
-            'first' => 'Master',
-            'last' => 'Ogway',
-        ],
-        'role' => 'premium',
-        'social' => [
-            'facebook' => '/master_ogway',
-            'instagram' => '',
-            'tiktok' => '@master_ogway',
-            'twitter' => '@master_ogway'
-        ]
-    ],
-)->id();
+// $id = $userCollectionRef->add(
+//     [
+//         'username' => 'MasterOgway',
+//         'email' => 'MasterOgway@google.com',
+//         'password' => 'Ogway',
+//         'name' => [
+//             'first' => 'Master',
+//             'last' => 'Ogway',
+//         ],
+//         'role' => 'premium',
+//         'social' => [
+//             'facebook' => '/master_ogway',
+//             'instagram' => '',
+//             'tiktok' => '@master_ogway',
+//             'twitter' => '@master_ogway'
+//         ]
+//     ],
+// )->id();
 
-$newUser = $userCollectionRef->document($id)->snapshot();
+// $newUser = $userCollectionRef->document($id)->snapshot();
+
+$userCollectionRef = $db->collection('users');
+
+$users = $userCollectionRef->documents();
+
+echo "<pre>";
+print_r($users);
+
+echo "</pre>";
 
 ?>
 
-<h3>Username</h3>
+<!-- <h3>Username</h3>
 <p><?= $newUser['username'] ?></p>
 
 <h3>Email</h3>
@@ -91,4 +65,4 @@ $newUser = $userCollectionRef->document($id)->snapshot();
 <p>facebook: <?= $newUser['social']['facebook'] ?></p>
 <p>instagram: <?= $newUser['social']['instagram'] ?></p>
 <p>tiktok: <?= $newUser['social']['tiktok'] ?></p>
-<p>twitter: <?= $newUser['social']['twitter'] ?></p>
+<p>twitter: <?= $newUser['social']['twitter'] ?></p> -->
