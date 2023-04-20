@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "username": "rcuming0",
+        "first_name": "Rex",
+        "last_name": "Cuming",
+        "email": "rcuming0@omniture.com",
+        "password": "BC6TwdXkklH",
+        "role": "Free"
+    },
+    {
+        "id": 2,
+        "username": "lmerriday1",
+        "first_name": "Lezlie",
+        "last_name": "Merriday",
+        "email": "lmerriday1@imdb.com",
+        "password": "aOacgfUtd",
+        "role": "Premium"
+    },
+    {
+        "id": 3,
+        "username": "mgokes2",
+        "first_name": "Mathian",
+        "last_name": "Gokes",
+        "email": "mgokes2@pen.io",
+        "password": "3jbO4II",
+        "role": "Premium"
+    },
+    {
+        "id": 4,
+        "username": "dmcwhirter3",
+        "first_name": "Dalli",
+        "last_name": "McWhirter",
+        "email": "dmcwhirter3@scientificamerican.com",
+        "password": "OWSlI41",
+        "role": "Free"
+    },
+    {
+        "id": 5,
+        "username": "eesby4",
+        "first_name": "Ellyn",
+        "last_name": "Esby",
+        "email": "eesby4@nytimes.com",
+        "password": "1Kva27rQx",
+        "role": "Free"
+    }
+]
