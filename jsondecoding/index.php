@@ -23,37 +23,12 @@ $json = json_decode($file);
 <body>
 
     <div class="container">
-        <table class="table table-sm table-striped table-borded border-primary">
 
-            <tr class="table-primary">
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Phone Number</th>
-                <th>Address</th>
-                <th>Date of Birth</th>
-            </tr>
-
-            <?php
-            foreach ($json as $data) {
-            ?>
-                <tr>
-
-                    <td><?= $data->id ?></td>
-                    <td><?= $data->firstname ?></td>
-                    <td><?= $data->lastname ?></td>
-                    <td><?= $data->email ?></td>
-                    <td><?= $data->gender ?></td>
-                    <td><?= $data->phoneNumber ?></td>
-                    <td><?= $data->address ?></td>
-                    <td><?= $data->dob ?></td>
-
-                </tr>
-            <?php } ?>
-
-        </table>
+        <?php
+        foreach ($json as $data) {
+        ?>
+            <!-- code here -->
+        <?php } ?>
     </div>
 
 

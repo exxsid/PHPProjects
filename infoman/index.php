@@ -9,29 +9,7 @@ $db = new FirestoreClient([
     'projectID' => 'infoman2-g2-2bd13',
 ]);
 
-
 $userCollectionRef = $db->collection('users');
-
-// $id = $userCollectionRef->add(
-//     [
-//         'username' => 'MasterOgway',
-//         'email' => 'MasterOgway@google.com',
-//         'password' => 'Ogway',
-//         'name' => [
-//             'first' => 'Master',
-//             'last' => 'Ogway',
-//         ],
-//         'role' => 'premium',
-//         'social' => [
-//             'facebook' => '/master_ogway',
-//             'instagram' => '',
-//             'tiktok' => '@master_ogway',
-//             'twitter' => '@master_ogway'
-//         ]
-//     ],
-// )->id();
-
-// $newUser = $userCollectionRef->document($id)->snapshot();
 
 ?>
 
@@ -48,7 +26,7 @@ $userCollectionRef = $db->collection('users');
 
 <body>
     <div class="container">
-        <form action="">
+        <form>
             <label for="username" class="form-label">Username: </label>
             <input type="text" name="username" required class="form-control" placeholder="username">
             <br>
@@ -137,8 +115,6 @@ $userCollectionRef = $db->collection('users');
             foreach ($users as $user) {
             ?>
 
-
-
                 <tr>
                     <td><?= $user['name']['last'] ?></td>
                     <td><?= $user['name']['first'] ?></td>
@@ -146,8 +122,6 @@ $userCollectionRef = $db->collection('users');
                     <td><?= $user['role'] ?></td>
                     <td><a href=<?= "index.php/?delete=" . $user->id() ?>>Delete</a></td>
                 </tr>
-
-
 
             <?php
             }
