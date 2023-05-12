@@ -7,11 +7,11 @@ class LikeButton
     public function display($id)
     {
         if ($this->state == "liked") {
-            echo '<form method="GET">';
+            echo '<form>';
             echo '<button name="like" value="' . $this->state . ',' . $id . '" class="btn btn-primary mb-3">Like</button>';
             echo '</form>';
         } else {
-            echo '<form method="GET">';
+            echo '<form>';
             echo
             '<button name="like" value="' . $this->state . ',' . $id . '">Like</button>';
             echo '</form>';

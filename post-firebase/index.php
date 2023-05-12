@@ -25,6 +25,22 @@ $postCollectionRef = $db->collection("posts");
 </head>
 
 <body>
+
+    <?php
+    if (isset($_GET['like'])) {
+        $currLike = $postCollectionRef->document(explode(",", $_GET['like'])[1])->snapshot()['reaction'];
+        $state = explode(",", $_GET['like'])[0];
+        if ($state == "true") {
+            $postCollectionRef->document(explode(",", $_GET['like'])[1])->set([
+                'reaction' => $currLike - 1,
+            ], ['merge' => true]);
+        } else {
+            $postCollectionRef->document(explode(",", $_GET['like'])[1])->set([
+                'reaction' => $currLike + 1,
+            ], ['merge' => true]);
+        }
+    }
+    ?>
     <div class="container mt-5">
         <form class="row g-3">
             <div class="col-auto">
@@ -50,8 +66,36 @@ $postCollectionRef = $db->collection("posts");
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $post['title'] ?></h5>
                                     <p class="card-text"><?= $post['body'] ?></p>
-                                    <a href="#" class="btn btn-primary">Reaction: <?= $post['reaction'] ?></a>
-                                    <a href="#" class="btn btn-primary">Comment: <?= $post['comment'] ?></a>
+                                    <form action="">
+                                        <?php
+                                        if (
+                                            isset($_GET['like']) &&
+                                            explode(",", $_GET['like'])[1] == $post->id()
+                                        ) :
+                                            $currState = explode(",", $_GET['like'])[0];
+                                            if ($state == "false") :
+                                        ?>
+                                                <button type="submit" name="like" class="btn btn-primary" value="true,<?= $post->id() ?>">
+                                                    Likes: <?= $post['reaction'] ?>
+                                                </button>
+                                            <?php
+                                            else :
+                                            ?>
+                                                <button type="submit" name="like" value="false,<?= $post->id() ?>">
+                                                    Likes: <?= $post['reaction'] ?>
+                                                </button>
+                                            <?php
+                                            endif;
+                                        else :
+                                            ?>
+                                            <button type="submit" name="like" value="false,<?= $post->id() ?>">
+                                                Likes: <?= $post['reaction'] ?>
+                                            </button>
+                                        <?php
+                                        endif;
+                                        ?>
+                                        <button type="submit" name="comment" class="btn btn-primary">Comment <?= $post['comment'] ?></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -67,8 +111,37 @@ $postCollectionRef = $db->collection("posts");
                             <div class="card-body">
                                 <h5 class="card-title"><?= $post['title'] ?></h5>
                                 <p class="card-text"><?= $post['body'] ?></p>
-                                <a href="#" class="btn btn-primary">Reaction: <?= $post['reaction'] ?></a>
-                                <a href="#" class="btn btn-primary">Comment: <?= $post['comment'] ?></a>
+                                <form action="">
+                                    <?php
+                                    if (
+                                        isset($_GET['like']) &&
+                                        explode(",", $_GET['like'])[1] == $post->id()
+                                    ) :
+                                        $currState = explode(",", $_GET['like'])[0];
+                                        if ($state == "false") :
+                                    ?>
+                                            <button type="submit" name="like" class="btn btn-primary" value="true,<?= $post->id() ?>">
+                                                Likes: <?= $post['reaction'] ?>
+                                            </button>
+                                        <?php
+                                        else :
+                                        ?>
+                                            <button type="submit" name="like" value="false,<?= $post->id() ?>">
+                                                Likes: <?= $post['reaction'] ?>
+                                            </button>
+                                        <?php
+                                        endif;
+                                    else :
+                                        ?>
+                                        <button type="submit" name="like" value="false,<?= $post->id() ?>">
+                                            Likes: <?= $post['reaction'] ?>
+                                        </button>
+                                    <?php
+                                    endif;
+                                    ?>
+
+                                    <button type="submit" name="comment" class="btn btn-primary">Comment: <?= $post['comment'] ?></button>
+                                </form>
                             </div>
                         </div>
                     </div>
