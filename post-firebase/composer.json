@@ -1,0 +1,18 @@
+{
+    "name": "asus/post-firebase",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Asus\\PostFirebase\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "exxsid",
+            "email": "cortezleoanthony5@gmail.com"
+        }
+    ],
+    "require": {
+        "google/cloud-firestore": "^1.31"
+    }
+}
