@@ -1,12 +1,11 @@
 <?php
 
 require 'vendor\autoload.php';
-require '.\src\includes\likeButton.php';
+putenv('FIRESTORE_EMULATOR_HOST=localhost:8028');
 
 use Google\Cloud\Firestore\FirestoreClient;
 
 $db = new FirestoreClient([
-    "keyFilePath" => "keys\infoman2-g2-2bd13-firebase-adminsdk-c7b51-c3abefd114.json",
     "projectId" => "infoman2-g2-2bd13"
 ]);
 
@@ -28,16 +27,21 @@ $postCollectionRef = $db->collection("posts");
 
     <?php
     if (isset($_GET['like'])) {
-        $currLike = $postCollectionRef->document(explode(",", $_GET['like'])[1])->snapshot()['reaction'];
-        $state = explode(",", $_GET['like'])[0];
-        if ($state == "true") {
-            $postCollectionRef->document(explode(",", $_GET['like'])[1])->set([
+        $p = $postCollectionRef->document($_GET['like'])->snapshot();
+        $currLike = $p['reaction'];
+        $state = $p['like'];
+        if ($state) {
+            $postCollectionRef->document($p->id())->set([
                 'reaction' => $currLike - 1,
+                'like' => false
             ], ['merge' => true]);
+            header("Location: index.php");
         } else {
-            $postCollectionRef->document(explode(",", $_GET['like'])[1])->set([
+            $postCollectionRef->document($p->id())->set([
                 'reaction' => $currLike + 1,
+                'like' => true
             ], ['merge' => true]);
+            header("Location: index.php");
         }
     }
     ?>
@@ -55,53 +59,36 @@ $postCollectionRef = $db->collection("posts");
             <?php
             if (isset($_GET['search'])) :
                 $posts = $postCollectionRef->documents();
-                foreach ($posts as $post) :
-                    if (
-                        strpos(strtolower($post['title']), strtolower($_GET['search'])) ||
-                        strpos(strtolower($post['body']), strtolower($_GET['search']))
-                    ) :
+                if ($posts->isEmpty()) :
             ?>
-                        <div class="col-sm-6 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= $post['title'] ?></h5>
-                                    <p class="card-text"><?= $post['body'] ?></p>
-                                    <form action="">
-                                        <?php
-                                        if (
-                                            isset($_GET['like']) &&
-                                            explode(",", $_GET['like'])[1] == $post->id()
-                                        ) :
-                                            $currState = explode(",", $_GET['like'])[0];
-                                            if ($state == "false") :
-                                        ?>
-                                                <button type="submit" name="like" class="btn btn-primary" value="true,<?= $post->id() ?>">
-                                                    Likes: <?= $post['reaction'] ?>
-                                                </button>
-                                            <?php
-                                            else :
-                                            ?>
-                                                <button type="submit" name="like" value="false,<?= $post->id() ?>">
-                                                    Likes: <?= $post['reaction'] ?>
-                                                </button>
-                                            <?php
-                                            endif;
-                                        else :
-                                            ?>
-                                            <button type="submit" name="like" value="false,<?= $post->id() ?>">
+                    <h3>No result found.</h3>
+                    <?php
+                else :
+
+                    foreach ($posts as $post) :
+                        if (
+                            strpos(strtolower($post['title']), strtolower($_GET['search'])) ||
+                            strpos(strtolower($post['body']), strtolower($_GET['search']))
+                        ) :
+                    ?>
+                            <div class="col-sm-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $post['title'] ?></h5>
+                                        <p class="card-text"><?= $post['body'] ?></p>
+                                        <form action="">
+                                            <button type="submit" name="like" <?= $post['like'] ? 'class="btn btn-primary" value="' . $post->id() . '"' : 'class="btn" value="' . $post->id() . '"' ?>>
                                                 Likes: <?= $post['reaction'] ?>
                                             </button>
-                                        <?php
-                                        endif;
-                                        ?>
-                                        <button type="submit" name="comment" class="btn btn-primary">Comment <?= $post['comment'] ?></button>
-                                    </form>
+                                            <button type="submit" name="comment" class="btn btn-primary">Comment <?= $post['comment'] ?></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     <?php
-                    endif;
-                endforeach;
+                        endif;
+                    endforeach;
+                endif;
             else :
                 $posts = $postCollectionRef->documents();
                 foreach ($posts as $post) :
@@ -112,33 +99,9 @@ $postCollectionRef = $db->collection("posts");
                                 <h5 class="card-title"><?= $post['title'] ?></h5>
                                 <p class="card-text"><?= $post['body'] ?></p>
                                 <form action="">
-                                    <?php
-                                    if (
-                                        isset($_GET['like']) &&
-                                        explode(",", $_GET['like'])[1] == $post->id()
-                                    ) :
-                                        $currState = explode(",", $_GET['like'])[0];
-                                        if ($state == "false") :
-                                    ?>
-                                            <button type="submit" name="like" class="btn btn-primary" value="true,<?= $post->id() ?>">
-                                                Likes: <?= $post['reaction'] ?>
-                                            </button>
-                                        <?php
-                                        else :
-                                        ?>
-                                            <button type="submit" name="like" value="false,<?= $post->id() ?>">
-                                                Likes: <?= $post['reaction'] ?>
-                                            </button>
-                                        <?php
-                                        endif;
-                                    else :
-                                        ?>
-                                        <button type="submit" name="like" value="false,<?= $post->id() ?>">
-                                            Likes: <?= $post['reaction'] ?>
-                                        </button>
-                                    <?php
-                                    endif;
-                                    ?>
+                                    <button type="submit" name="like" <?= $post['like'] ? 'class="btn btn-primary" value="' . $post->id() . '"' : 'class="btn" value="' . $post->id() . '"' ?>>
+                                        Likes: <?= $post['reaction'] ?>
+                                    </button>
 
                                     <button type="submit" name="comment" class="btn btn-primary">Comment: <?= $post['comment'] ?></button>
                                 </form>
