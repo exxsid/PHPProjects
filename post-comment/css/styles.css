@@ -1,0 +1,11 @@
+.ch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar {
+    max-width: 5%;
+    max-height: 5%;
+}
