@@ -1,0 +1,37 @@
+posts: {
+    'content',
+    'date',
+    'user_id',
+    'like_count', // update via the code and via clound functions
+    'comment_count' // update via the code and via clound functions 
+    /* can do; the separate collection for likes and comments would be ommitted
+    likes {
+        'user_id'
+    }
+    comments {
+        [
+            'user_id'
+            'comment'
+        ]
+    }
+    */
+}
+
+users: {
+    'firstname',
+    'lastname',
+    'email',
+    'password'
+}
+
+post_comments: {
+    'post_id',
+    'user_id',
+    'date'
+}
+
+post_likes: {
+    'post_id',
+    'user_id',
+    'date'
+}
