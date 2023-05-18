@@ -27,11 +27,13 @@ $newUser = [
 try {
     $user = $auth->createUser($newUser);
 
-    $firestore->database()->collection('user2')->document($user->uid)->set([
+    $firestore->database()->collection('users2')->document($user->uid)->set([
         'username' => $_POST['username'],
         'email' => $_POST['email'],
+        'firstname' => $_POST['firstname'],
+        'lastname' => $_POST['lastname'],
+        'avatar' => 'https://img.mensxp.com/media/content/2015/Jan/kindsoffacebookprofilephotoswearesickofseeing1_1420801169.jpg',
     ]);
 } catch (Exception $e) {
     header("Location: index.php?error=" . $e->getMessage());
 }
-echo "succes";

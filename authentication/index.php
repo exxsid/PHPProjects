@@ -1,8 +1,6 @@
 <?php
 require_once "./vendor/autoload.php";
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +28,16 @@ require_once "./vendor/autoload.php";
     <div class="container ">
         <h1>Sign Up</h1>
         <form action="signup.php" method="post" class="m-5">
+            <div class="mb-3">
+                <label for="" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstname" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastname" required>
+            </div>
+
             <div class="mb-3">
                 <label for="" class="form-label">Username</label>
                 <input type="text" class="form-control" name="username" required>
