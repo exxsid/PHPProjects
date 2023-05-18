@@ -19,6 +19,7 @@ require_once './db.php';
     <div class="container mt-5">
         <!-- post -->
         <?php
+        $id = "2c08b2dda6554b2b905a";
         $posts = $db->collection('post2')->documents();
         foreach ($posts as $post) {
             include './post.php';
