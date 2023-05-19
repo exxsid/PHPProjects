@@ -24,6 +24,10 @@ $newUser = [
     'email' => $_POST['email'],
     'password' => $_POST['password'],
 ];
+if ($_POST['password'] != $_POST['confirmPass']) {
+    header("Location: index.php?error=Password is not the same");
+}
+
 try {
     $user = $auth->createUser($newUser);
 
