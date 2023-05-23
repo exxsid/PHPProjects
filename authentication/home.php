@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require_once './utils/db.php';
+
 if (isset($_POST['logout'])) {
     session_destroy();
 
@@ -11,7 +13,11 @@ include './views/partials/header.php';
 ?>
 
 <body>
-    <?= "Hello user " . $_SESSION['userId']; ?>
+    <?php
+    $user = $firestore->database()->collection('users2')->document($_SESSION['userId'])->snapshot();
+    $username = $user['username'];
+    ?>
+    <?= "Hello user " .  $username ?>
     <form action="" method="post">
         <button type="submit" name='logout' class="btn btn-primary">Logout</button>
     </form>
