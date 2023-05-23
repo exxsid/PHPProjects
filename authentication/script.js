@@ -2,7 +2,7 @@ function validatePass() {
   var input = document.getElementById("password");
   var errorMessage = document.getElementById("errorMessage");
 
-  var isValid = input.value.length > 6;
+  var isValid = input.value.length >= 6;
 
   if (!isValid) {
     input.classList.add("error");
@@ -21,7 +21,7 @@ function validateConPass() {
   var input = document.getElementById("conpassword");
   var errorMessage = document.getElementById("conerrorMessage");
 
-  var isValid = input.value.length > 6;
+  var isValid = input.value.length >= 6;
 
   if (!isValid) {
     input.classList.add("error");
