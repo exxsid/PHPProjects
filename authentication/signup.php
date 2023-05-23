@@ -41,3 +41,5 @@ try {
 } catch (Exception $e) {
     header("Location: index.php?error=" . $e->getMessage());
 }
+
+header('Location: signin.php');
