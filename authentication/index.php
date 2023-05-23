@@ -59,7 +59,13 @@ require_once "./vendor/autoload.php";
                 <input type="password" class="form-control" name="confirmPass" required id="conpassword" onblur="validateConPass()">
                 <div id="conerrorMessage"></div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+
+            <div class="">
+                <a href="signin.php">Already have an account?</a>
+            </div>
         </form>
     </div>
 </body>
