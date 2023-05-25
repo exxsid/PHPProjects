@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once "vendor/autoload.php";
 
 include './src/views/partials/header.php';
@@ -6,6 +9,11 @@ include './src/views/partials/header.php';
 
 <body>
     <?php
+    if (isset($_SESSION['userId'])) {
+        header("Location: home.php");
+    }
+
+
     if (isset($_GET['error'])) {
     ?>
         <script>

@@ -1,9 +1,17 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once $_SERVER['DOCUMENT_ROOT'] . '\vendor\autoload.php';
 
 include $_SERVER['DOCUMENT_ROOT'] . '\src\views\partials\header.php';
 ?>
 <?php
+if (isset($_SESSION['userId'])) {
+    header("Location: home.php");
+}
+
+
 if (isset($_GET['error'])) {
 ?>
     <script>
