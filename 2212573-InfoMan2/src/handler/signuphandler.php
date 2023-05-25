@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '\utils\db.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '\src\utils\db.php';
 
 
 

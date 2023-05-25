@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 
 if (isset($_SESSION['userId'])) {
-    header("Location: src/views/home.php");
+    header("Location: ./src/views/home.php");
 }
 
 require '.\src\views\signup.php';
