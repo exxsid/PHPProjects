@@ -4,9 +4,9 @@ if (!isset($_SESSION)) {
 }
 
 
-
 if (isset($_SESSION['userId'])) {
     header("Location: ./src/views/home.php");
+    exit;
 }
 
 require '.\src\views\signup.php';
