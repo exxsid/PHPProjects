@@ -55,6 +55,12 @@ if (isset($_POST['newPost'])) {
     $lastUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     header("Location: " . $lastUrl);
 }
+
+if (isset($_GET['comment'])) {
+    $_SESSION['postId'] = $_GET['comment'];
+
+    header("Location: comment.php");
+}
 ?>
 
 <body style="background-color: #DAD7CD;">
@@ -138,10 +144,13 @@ if (isset($_POST['newPost'])) {
                                     </div>
                                     |
                                     <div class="col">
-                                        <i class="fa-regular fa-comment"></i>
-                                        <span>
-                                            <?= $post['comment_count'] ?> comments
-                                        </span>
+                                        <a href="<?= "?comment=" . $post->id() ?>" style="text-decoration: none;">
+                                            <i class="fa-regular fa-comment"></i>
+                                            <span>
+                                                <?= $post['comment_count'] ?> comments
+                                            </span>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -201,10 +210,12 @@ if (isset($_POST['newPost'])) {
                             </div>
                             |
                             <div class="col">
-                                <i class="fa-regular fa-comment"></i>
-                                <span>
-                                    <?= $post['comment_count'] ?> comments
-                                </span>
+                                <a href="<?= "?comment=" . $post->id() ?>" style="text-decoration: none;">
+                                    <i class="fa-regular fa-comment"></i>
+                                    <span>
+                                        <?= $post['comment_count'] ?> comments
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </div>
