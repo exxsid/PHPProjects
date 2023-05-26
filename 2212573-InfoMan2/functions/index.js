@@ -27,8 +27,6 @@ exports.commentsCounter = functions.firestore
   .onCreate((snapshot, context) => {
     const postId = snapshot.data().post_id;
 
-    //query post_comments collection and fetch all
-    //whose post_id = postId
     return admin
       .firestore()
       .collection("post_comments")
@@ -36,7 +34,7 @@ exports.commentsCounter = functions.firestore
       .get()
       .then((querySnapshot) => {
         const commentsCount = querySnapshot.size;
-        //update the post comment count
+
         return admin
           .firestore()
           .collection("posts")
@@ -53,8 +51,6 @@ exports.likesCounter = functions.firestore
   .onCreate((snapshot, context) => {
     const postId = snapshot.data().post_id;
 
-    //query post_comments collection and fetch all
-    //whose post_id = postId
     return admin
       .firestore()
       .collection("post_likes")
@@ -62,7 +58,31 @@ exports.likesCounter = functions.firestore
       .get()
       .then((querySnapshot) => {
         const likeCount = querySnapshot.size;
-        //update the post comment count
+
+        return admin
+          .firestore()
+          .collection("posts")
+          .doc(postId)
+          .update({ like_count: likeCount });
+      })
+      .catch((error) => {
+        console.error("Error updating like count: ", error);
+      });
+  });
+
+exports.unlikeListener = functions.firestore
+  .document("post_likes/{likeId}")
+  .onDelete((snapshot, context) => {
+    const postId = snapshot.data().post_id;
+
+    return admin
+      .firestore()
+      .collection("post_likes")
+      .where("post_id", "==", postId)
+      .get()
+      .then((querySnapshot) => {
+        const likeCount = querySnapshot.size;
+
         return admin
           .firestore()
           .collection("posts")
