@@ -1,5 +1,6 @@
 <?php
 
+use Google\Cloud\Firestore\FieldValue;
 use Kreait\Firebase\Database\Snapshot;
 
 session_start();
@@ -37,6 +38,20 @@ if (isset($_GET['like'])) {
         ];
         $firestore->database()->collection("post_likes")->add($newPL);
     }
+    $lastUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    header("Location: " . $lastUrl);
+}
+
+if (isset($_POST['newPost'])) {
+    $content = $_POST['newPost'];
+    $newPost = [
+        'content' => $content,
+        'userId' => $_SESSION['userId'],
+        'post_time' => FieldValue::serverTimestamp(),
+        'comment_count' => 0,
+        'like_count' => 0,
+    ];
+    $firestore->database()->collection("posts")->add($newPost);
     $lastUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     header("Location: " . $lastUrl);
 }
