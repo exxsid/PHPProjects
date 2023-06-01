@@ -1,9 +1,28 @@
+body {
+    color: #e8e8e8;
+}
+
+span,
+p,
+strong,
+i {
+    color: #e8e8e8;
+}
+
+.posts {
+    background-color: #588157;
+}
+
 .nav-bg {
-    background-color: #A3B18A;
+    background-color: #344E41;
     color: #101010;
 }
 
 .search-btn {
     border: 2px solid #101010;
 
+}
+
+.wrapper {
+    max-width: 800px;
 }

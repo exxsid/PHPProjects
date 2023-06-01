@@ -14,7 +14,7 @@
         </form>
 
         <div class="d-flex">
-            <a href="profile.php">
+            <a href="profile.php" style="text-decoration: none;">
                 <span class="mx-3">
                     <?=
                     $firestore->database()
@@ -26,7 +26,7 @@
             </a>
 
             <form action="" method="post">
-                <button type="submit" name='logout' class="btn btn-primary">Logout</button>
+                <button type="submit" name='logout' class="btn btn-light">Logout</button>
             </form>
         </div>
     </div>

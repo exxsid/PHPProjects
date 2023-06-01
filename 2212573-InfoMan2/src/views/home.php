@@ -63,14 +63,14 @@ if (isset($_GET['comment'])) {
 }
 ?>
 
-<body style="background-color: #DAD7CD;">
+<body style="background-color: #3A5A40;">
     <?php
     include './partials/topnavbar.php';
     ?>
     <!-- contents -->
-    <div class="container px-5">
+    <div class="container px-5" style="max-width: 800px;">
         <!-- New Post card  -->
-        <div class="card my-3">
+        <div class="card my-3" style="background-color: #588157;">
             <div class="card-header">
                 <img src=<?= $loggedinUser['avatar'] ?> alt="avatar" class="rounded-circle me-2" style="max-width: 5%; max-height: 5%">
                 <span class=""><?= $loggedinUser['firstname'] . " " . $loggedinUser['lastname'] ?></span>
@@ -78,8 +78,8 @@ if (isset($_GET['comment'])) {
             <div class="card-body">
                 <div>
                     <form method="post">
-                        <textarea class="w-100 form-control" name="newPost" id="" placeholder="Share some contents here"></textarea>
-                        <button type="submit" class="btn btn-primary mt-3 float-end">Post</button>
+                        <textarea class="w-100 form-control" name="newPost" id="" placeholder="Share some contents here" style="background-color: #A3B18A;"></textarea>
+                        <button type="submit" class="btn btn-light mt-3 float-end">Post</button>
                     </form>
                 </div>
             </div>
@@ -100,7 +100,7 @@ if (isset($_GET['comment'])) {
                     $originalPoster = $users->document($post['userId'])->snapshot();
                     if (stripos($post['content'], $_GET['search']) !== false) :
                 ?>
-                        <div class="card my-2">
+                        <div class="card my-2" style="background-color: #588157;">
                             <!-- headre -->
                             <div class="card-header">
                                 <img src=<?= $originalPoster['avatar'] ?> alt="avatar" class="rounded-circle me-2" style="max-width: 5%; max-height: 5%">
@@ -166,7 +166,7 @@ if (isset($_GET['comment'])) {
                 $originalPoster = $users->document($post['userId'])->snapshot();
                 ?>
 
-                <div class="card my-2">
+                <div class="card my-2" style="background-color: #588157;">
                     <!-- headre -->
                     <div class="card-header">
                         <img src=<?= $originalPoster['avatar'] ?> alt="avatar" class="rounded-circle me-2" style="max-width: 5%; max-height: 5%">
