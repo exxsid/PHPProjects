@@ -6,6 +6,8 @@ if (!isset($_SESSION)) {
 
 use Kreait\Firebase\Exception\Auth\InvalidPassword;
 use Kreait\Firebase\Exception\Auth\UserNotFound;
+use Kreait\Firebase\Exception\InvalidArgumentException;
+use Kreait\Firebase\Auth\SignIn\FailedToSignIn;
 
 include_once '../utils/db.php';
 
@@ -24,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (InvalidPassword $ip) {
         echo "test";
         header('Location: ..\views\signin.php?error=' . $ip->getMessage());
+    } catch (InvalidArgumentException $iae) {
+        header('Location: ..\views\signin.php?error=' . $iae->getMessage());
+    } catch (FailedToSignIn $fts) {
+        header('Location: ..\views\signin.php?error=' . $fts->getMessage());
     }
 } else {
     header("Location: ../views/signin.php");
