@@ -7,7 +7,7 @@ require_once "vendor/autoload.php";
 include './src/views/partials/header.php';
 ?>
 
-<body>
+<body style="background-color: #588157;">
     <?php
     if (isset($_SESSION['userId'])) {
         header("Location: home.php");
@@ -22,7 +22,11 @@ include './src/views/partials/header.php';
     <?php
     }
     ?>
-    <div class="container ">
+    <div class="container " style="margin-top: 50px; max-width: 540px; position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;">
         <h1>Sign Up</h1>
         <form action="./src/handler/signuphandler.php" method="post" class="m-5">
             <div class="mb-3">
@@ -57,11 +61,11 @@ include './src/views/partials/header.php';
                 <div id="conerrorMessage"></div>
             </div>
             <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-light">Sign Up</button>
             </div>
 
             <div class="">
-                <a href="./src/views/signin.php">Already have an account?</a>
+                <a href="./src/views/signin.php" style="color: #e8e8e8">Already have an account?</a>
             </div>
         </form>
     </div>

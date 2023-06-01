@@ -5,7 +5,9 @@ body {
 span,
 p,
 strong,
-i {
+i,
+label,
+h1 {
     color: #e8e8e8;
 }
 
