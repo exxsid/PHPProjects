@@ -9,6 +9,10 @@
 
 const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
+const {
+  onDocumentCreated,
+  onDocumentDeleted,
+} = require("firebase-functions/v2/firestore");
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -18,14 +22,15 @@ const logger = require("firebase-functions/logger");
 //   response.send("Hello from Firebase!");
 // });
 
-const functions = require("firebase-functions");
+const { initializeApp } = require("firebase-admin/app");
 const admin = require("firebase-admin");
-admin.initializeApp();
+initializeApp();
 
-exports.commentsCounter = functions.firestore
-  .document("post_comments/{commentId}")
-  .onCreate((snapshot, context) => {
-    const postId = snapshot.data().post_id;
+exports.countComments = onDocumentCreated(
+  "post_comments/{commentId}",
+  (event) => {
+    const snapshot = event.data;
+    const postId = snapshot.data().postId;
 
     return admin
       .firestore()
@@ -44,52 +49,51 @@ exports.commentsCounter = functions.firestore
       .catch((error) => {
         console.error("Error updating comment count: ", error);
       });
-  });
+  }
+);
 
-exports.likesCounter = functions.firestore
-  .document("post_likes/{likeId}")
-  .onCreate((snapshot, context) => {
-    const postId = snapshot.data().post_id;
+exports.countLikes = onDocumentCreated("post_likes/{likeId}", (event) => {
+  const snapshot = event.data;
+  const postId = snapshot.data().postId;
 
-    return admin
-      .firestore()
-      .collection("post_likes")
-      .where("post_id", "==", postId)
-      .get()
-      .then((querySnapshot) => {
-        const likeCount = querySnapshot.size;
+  return admin
+    .firestore()
+    .collection("post_likes")
+    .where("post_id", "==", postId)
+    .get()
+    .then((querySnapshot) => {
+      const commentsCount = querySnapshot.size;
 
-        return admin
-          .firestore()
-          .collection("posts")
-          .doc(postId)
-          .update({ like_count: likeCount });
-      })
-      .catch((error) => {
-        console.error("Error updating like count: ", error);
-      });
-  });
+      return admin
+        .firestore()
+        .collection("posts")
+        .doc(postId)
+        .update({ comment_count: commentsCount });
+    })
+    .catch((error) => {
+      console.error("Error updating like count: ", error);
+    });
+});
 
-exports.unlikeListener = functions.firestore
-  .document("post_likes/{likeId}")
-  .onDelete((snapshot, context) => {
-    const postId = snapshot.data().post_id;
+exports.unlikeCount = onDocumentDeleted("post_likes/{likeId}", (event) => {
+  const snapshot = event.data;
+  const postId = snapshot.data().postId;
 
-    return admin
-      .firestore()
-      .collection("post_likes")
-      .where("post_id", "==", postId)
-      .get()
-      .then((querySnapshot) => {
-        const likeCount = querySnapshot.size;
+  return admin
+    .firestore()
+    .collection("post_likes")
+    .where("post_id", "==", postId)
+    .get()
+    .then((querySnapshot) => {
+      const likeCount = querySnapshot.size;
 
-        return admin
-          .firestore()
-          .collection("posts")
-          .doc(postId)
-          .update({ like_count: likeCount });
-      })
-      .catch((error) => {
-        console.error("Error updating like count: ", error);
-      });
-  });
+      return admin
+        .firestore()
+        .collection("posts")
+        .doc(postId)
+        .update({ like_count: likeCount });
+    })
+    .catch((error) => {
+      console.error("Error updating like count: ", error);
+    });
+});
