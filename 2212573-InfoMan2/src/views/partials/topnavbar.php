@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <form class="d-flex" method="get">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search" style="background-color: #416252; color: white">
             <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
 
